@@ -7,15 +7,34 @@ export default function Range({type, steps, size, handleClick}) {
   const [max, setMax] = useState(80);
 
   const handleMin = (e) => {
-    const value = Math.min(Number(e.target.value), max - 3);
+    const value = Math.min(Number(e.target.value), max);
     setMin(value);
     handleClick(e)
   };
 
   const handleMax = (e) => {
-    const value = Math.max(Number(e.target.value), min + 3);
+    const value = Math.max(Number(e.target.value), min);
     setMax(value);
     handleClick(e)
+  };
+
+  //handle min max during click event on slider  
+  const handleTrackClick = (e) => {
+    const val = e.clientX - 35;
+    const newValue = (val / 480) * 100;
+
+    if(newValue < (min + max)/2) {
+      let rem = newValue % steps
+      if (rem === 0) setMin(newValue)
+        else setMin(newValue - rem)
+    } else {
+      let rem = newValue % steps
+      if (rem === 0) setMax(newValue)
+      else {
+        let val = newValue - rem
+        setMax(val + steps)
+      }
+    }
   };
 
   return (
@@ -55,13 +74,13 @@ export default function Range({type, steps, size, handleClick}) {
         onChange={handleMax}
         className="slider-thumb slider-thumb-max"
       />
-      <div className="slider-track">
+      <div className="slider-track" onClick={handleTrackClick}>
         <div className="slider-range" style={{ left: `${min}%`, width: `${max - min}%` }}></div>
       </div>
       <div className="values">
-        <span>Min: {min}</span>
-        <span>Max: {max}</span>
-        {type==="Discrete" && <span>step:{steps}</span>}
+        <h1>Min: {min}</h1>
+        <h1>Max: {max}</h1>
+        {type==="Discrete" && <h1>step:{steps}</h1>}
       </div>
     </div>
   );
