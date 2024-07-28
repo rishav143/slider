@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './RangeSlider.css';
 
-export default function Range({type, steps, handleClick}) {
+export default function Range({type, steps, size, handleClick}) {
   const setSteps = type === "Discrete" ? steps : "1"
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(80);
@@ -20,6 +20,23 @@ export default function Range({type, steps, handleClick}) {
 
   return (
     <div className="range-slider-container">
+      <style>
+        {`
+          .slider-thumb::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: ${size === "Size_24" ? `24px` : `32px`};
+            height: ${size === "Size_24" ? `24px` : `32px`};
+            border-radius: 50%;
+            border: ${size === "Size_24" ? `6px` : `8px`} solid #FFFFFF;
+            background: #47B647;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+          }
+        `}
+      </style>
       <input
         type="range"
         min="0"
