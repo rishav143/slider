@@ -3,13 +3,13 @@ import Discrete from "./Discrete";
 import Range from "./Range";
 import PropTypes from "prop-types";
 
-function Slider({ type, subtype, steps, size, handleClick, pseudo }) {
+function Slider({ type, subtype, steps, size, handleClick }) {
   if (type === "Continuous" && subtype === "Single") {
-    return <Continuous subtype={subtype} size={size} handleClick={handleClick} pseudo={pseudo}/>;
+    return <Continuous subtype={subtype} size={size} handleClick={handleClick} />;
   } else if (type === "Discrete" && subtype === "Single") {
-    return <Discrete subtype={subtype} steps={steps} size={size}  handleClick={handleClick} pseudo={pseudo}/>;
+    return <Discrete subtype={subtype} steps={steps} size={size}  handleClick={handleClick} />;
   } else {
-    return <Range type={type} steps={steps} size={size}  handleClick={handleClick} pseudo={pseudo}/>;
+    return <Range type={type} steps={steps} size={size}  handleClick={handleClick} />;
   }
 }
 
