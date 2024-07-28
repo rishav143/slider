@@ -1,0 +1,35 @@
+.slider-container {
+    position: relative;
+    margin: 20px;
+}
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #F2F3F5;
+    border-radius: 40px;
+    height: 8px;
+    width: 480px;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 6px solid #FFFFFF;
+    background: #47B647;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+.slider::-webkit-slider-thumb:hover {
+    border-color: #EDFAED;
+}
+.slider::-webkit-slider-thumb:active {
+    
+      box-shadow: 0 0 0 2px #4CAF50; 
+}
+.discrete-tick-active {
+    background-color: #FFFFFF;
+}
